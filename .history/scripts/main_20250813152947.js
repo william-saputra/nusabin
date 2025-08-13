@@ -129,7 +129,7 @@ function updateFill(binId, percent, volumeLiters) {
 
   rect.setAttribute("height", String(newHeight));
   rect.setAttribute("y", String(newY));
-  rect.setAttribute("fill", p >= 70 ? "#0DC798" : "#FF2828");
+  rect.setAttribute("fill", p >= 70 ? "#F04438" : "#3DDC97");
 
   const item = root.querySelector('.bucket-item[data-id="'+binId+'"]');
   if (!item) return;

@@ -97,19 +97,58 @@
 
 .cta{ margin-top:28px; }
 
+/* === Figma palette (ubah di sini kalau perlu) === */
 :root{
-  --rp-grad-start: #E2F6EC; /* atas */
-  --rp-grad-end:   #0C7B83; /* bawah */
+  --figma-mint: #CFF5EE;        /* pucat di atas */
+  --figma-teal: #49D6B1;        /* tengah */
+  --figma-green-dark: #0B5F57;  /* bawah / brand dark */
+  --figma-pill-amber: #F6C343;
+  --figma-dark-row: #16383B;    /* bar gelap "Chute" */
+  --figma-outline: rgba(255,255,255,.10);
 }
 
+/* === Right panel: gradient sama seperti figma === */
 .homepage .right-panel{
-  background: linear-gradient(180deg, var(--rp-grad-start) 0%, var(--rp-grad-end) 100%);
+  background: linear-gradient(180deg,
+              var(--figma-mint) 0%,
+              var(--figma-teal) 36%,
+              var(--figma-green-dark) 100%);
+  border-radius: 18px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* biar gradient-nya kelihatan, hilangkan bg dalamannya */
+/* buang background bawaan blok di dalamnya biar gradient terlihat */
 .homepage .right-panel .machine-wrapper,
-.homepage .right-panel .status-panel{
+.homepage .right-panel .status-panel{ 
   background: transparent !important;
   box-shadow: none !important;
 }
 
+/* bar gelap "Chute" */
+.homepage .right-panel .status-row.variant-dark{
+  background: var(--figma-dark-row);
+  color: #fff;
+  border-radius: 16px;
+  outline: 1px solid var(--figma-outline);
+}
+
+/* bar putih "Compost" */
+.homepage .right-panel .status-row.variant-light{
+  background: #fff;
+  color: var(--figma-green-dark);
+  border-radius: 16px;
+  outline: 1px solid var(--figma-outline);
+}
+
+/* pills di kanan */
+.homepage .right-panel .status-pill.pill-open{
+  background: var(--figma-pill-amber);
+  color: #113232;
+}
+.homepage .right-panel .status-pill.pill-on{
+  background: #EFFFF8;
+  color: var(--figma-green-dark);
+  bo

@@ -97,19 +97,58 @@
 
 .cta{ margin-top:28px; }
 
-:root{
-  --rp-grad-start: #E2F6EC; /* atas */
-  --rp-grad-end:   #0C7B83; /* bawah */
+/* === Right section full-height gradient (not just card) === */
+
+/* samakan dengan lebar kolom kananmu */
+:root { --right-col-w: 420px; }  /* ubah ke angka yang kamu pakai */
+
+/* Pastikan grid pakai lebar yang sama */
+.homepage .layout{
+  position: relative;
+  display: grid;                 /* kalau sudah grid di base.css, ini aman */
+  grid-template-columns: 1fr var(--right-col-w);
+  gap: 24px;                     /* sesuaikan dengan gap-mu */
+  z-index: 0;                    /* buat layer untuk overlay */
 }
 
-.homepage .right-panel{
-  background: linear-gradient(180deg, var(--rp-grad-start) 0%, var(--rp-grad-end) 100%);
+/* Overlay gradient yang mengisi penuh kolom kanan */
+.homepage .layout::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--right-col-w);
+  /* ganti warnanya sesukamu */
+  background: linear-gradient(180deg, #49D6B1 0%, #0B5F57 100%);
+  border-radius: 18px;           /* buang kalau mau sudut tajam */
+  z-index: 0;                    /* di bawah konten */
 }
 
-/* biar gradient-nya kelihatan, hilangkan bg dalamannya */
+/* Konten tetap di atas overlay */
+.homepage .layout > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Hilangkan background di elemen-elemen dalam right-panel agar overlay terlihat */
+.homepage .right-panel,
 .homepage .right-panel .machine-wrapper,
-.homepage .right-panel .status-panel{
+.homepage .right-panel .status-panel,
+.homepage .right-panel .card,
+.homepage .right-panel .panel{
   background: transparent !important;
   box-shadow: none !important;
+  border: 0;
 }
 
+/* Responsif: saat kolom menumpuk, matikan overlay */
+@media (max-width: 980px){
+  :root { --right-col-w: 100%; }
+  .homepage .layout{
+    grid-template-columns: 1fr;
+  }
+  .homepage .layout::before{
+    display: none;
+  }
+}

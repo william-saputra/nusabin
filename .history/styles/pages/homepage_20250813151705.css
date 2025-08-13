@@ -97,19 +97,46 @@
 
 .cta{ margin-top:28px; }
 
-:root{
-  --rp-grad-start: #E2F6EC; /* atas */
-  --rp-grad-end:   #0C7B83; /* bawah */
-}
+/* ===== Right panel: full-height dark green background ===== */
+
+/* pakai variabel warna kalau ada, fallback ke #0B5F57 */
+:root { --brand-green-dark: #0B5F57; }
 
 .homepage .right-panel{
-  background: linear-gradient(180deg, var(--rp-grad-start) 0%, var(--rp-grad-end) 100%);
+  background: var(--brand-green-dark);  /* hijau tua full */
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  /* penting: stretch agar mengisi tinggi layout */
+  align-self: stretch;
+  min-height: calc(100vh - var(--topbar-h, 96px));
 }
 
-/* biar gradient-nya kelihatan, hilangkan bg dalamannya */
+/* kartu di dalam panel kanan jangan punya background lagi */
 .homepage .right-panel .machine-wrapper,
 .homepage .right-panel .status-panel{
   background: transparent !important;
   box-shadow: none !important;
 }
 
+/* kalau kamu punya container inner dengan border-radius besar, rapikan */
+.homepage .right-panel .machine-wrapper,
+.homepage .right-panel .alerts,
+.homepage .right-panel .status-panel{
+  border-radius: 14px;
+}
+
+/* optional: beri garis tipis pemisah antar blok agar kontras di hijau tua */
+.homepage .right-panel .status-panel{
+  outline: 1px solid rgba(255,255,255,0.08);
+}
+
+/* pada viewport pendek, biar tidak kepotong di bawah */
+@media (max-height: 720px){
+  .homepage .right-panel{
+    min-height: auto;
+  }
+}

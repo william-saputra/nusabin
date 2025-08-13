@@ -1,3 +1,8 @@
+/* ===============================
+   Homepage – full CSS
+   =============================== */
+
+/* Approx header height (adjust if needed) */
 :root { --topbar-h: 96px; }
 
 /* Page-specific fine-tuning for Homepage */
@@ -96,20 +101,3 @@
 .card-right img{ max-width:88%; max-height:88%; object-fit:contain; }
 
 .cta{ margin-top:28px; }
-
-:root{
-  --rp-grad-start: #E2F6EC; /* atas */
-  --rp-grad-end:   #0C7B83; /* bawah */
-}
-
-.homepage .right-panel{
-  background: linear-gradient(180deg, var(--rp-grad-start) 0%, var(--rp-grad-end) 100%);
-}
-
-/* biar gradient-nya kelihatan, hilangkan bg dalamannya */
-.homepage .right-panel .machine-wrapper,
-.homepage .right-panel .status-panel{
-  background: transparent !important;
-  box-shadow: none !important;
-}
-

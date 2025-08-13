@@ -97,19 +97,52 @@
 
 .cta{ margin-top:28px; }
 
-:root{
-  --rp-grad-start: #E2F6EC; /* atas */
-  --rp-grad-end:   #0C7B83; /* bawah */
-}
+/* ===== Right panel: gradient full-height dari atas–bawah ===== */
+:root { --topbar-h: 96px; } /* samakan dengan tinggi headermu */
 
 .homepage .right-panel{
-  background: linear-gradient(180deg, var(--rp-grad-start) 0%, var(--rp-grad-end) 100%);
+  position: relative;
+  padding: 16px;
+  border-radius: 18px;
+  overflow: hidden;                         /* biar radius kepakai */
+  align-self: stretch;                      /* isi tinggi grid row */
+  min-height: calc(100vh - var(--topbar-h));/* full tinggi layar - header */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* biar gradient-nya kelihatan, hilangkan bg dalamannya */
+/* layer background gradient yang memenuhi seluruh panel */
+.homepage .right-panel::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* bebas ganti warna/arah gradasi: */
+  background: linear-gradient(180deg, #49D6B1 0%, #0B5F57 100%);
+}
+
+/* pastikan konten tampil di atas layer gradient */
+.homepage .right-panel > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* hapus background kotak-kotak di dalam panel kanan
+   (supaya yang terlihat cuma gradient full panel) */
 .homepage .right-panel .machine-wrapper,
-.homepage .right-panel .status-panel{
+.homepage .right-panel .status-panel {
   background: transparent !important;
   box-shadow: none !important;
 }
 
+/* kalau masih ada container lain yang punya background, transparankan juga: */
+.homepage .right-panel .card,
+.homepage .right-panel .panel {
+  background: transparent !important;
+}
+
+/* viewport pendek: jangan paksa full height supaya tidak kepotong */
+@media (max-height: 720px){
+  .homepage .right-panel{ min-height: auto; }
+}

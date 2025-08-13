@@ -129,7 +129,7 @@ function updateFill(binId, percent, volumeLiters) {
 
   rect.setAttribute("height", String(newHeight));
   rect.setAttribute("y", String(newY));
-  rect.setAttribute("fill", p >= 70 ? "#0DC798" : "#FF2828");
+  rect.setAttribute("fill", p >= 70 ? "#F04438" : "#3DDC97");
 
   const item = root.querySelector('.bucket-item[data-id="'+binId+'"]');
   if (!item) return;
@@ -163,25 +163,5 @@ BIN_IDS.forEach((id) => {
     }
   });
 });
-
-
-/* === Idle redirect to lockscreen (3 minutes) === */
-const IDLE_LIMIT_MS = 3 * 60 * 1000; // 180000 ms
-let idleTimer = null;
-
-function resetIdleTimer() {
-  if (idleTimer) clearTimeout(idleTimer);
-  idleTimer = setTimeout(() => {
-    window.location.href = "../pages/lockscreen.html";
-  }, IDLE_LIMIT_MS);
-}
-
-// Reset timer on common user interactions
-["load", "mousemove", "keydown", "touchstart", "click", "scroll", "visibilitychange"].forEach((evt) => {
-  window.addEventListener(evt, resetIdleTimer, { passive: true });
-});
-
-// Kick off the initial timer
-resetIdleTimer();
 
 

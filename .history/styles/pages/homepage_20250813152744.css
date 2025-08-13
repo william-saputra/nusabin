@@ -97,19 +97,53 @@
 
 .cta{ margin-top:28px; }
 
-:root{
-  --rp-grad-start: #E2F6EC; /* atas */
-  --rp-grad-end:   #0C7B83; /* bawah */
+/* ==== RIGHT SECTION FULL HEIGHT (bukan card) ==== */
+/* Samakan dengan lebar kolom kanan yang dipakai di grid-mu */
+:root { --right-col-w: 420px; }  /* ganti kalau kolom kananmu beda */
+
+/* Pastikan .layout jadi anchor buat overlay */
+.homepage .layout{
+  position: relative;
+  display: grid;                     /* aman kalau sudah grid */
+  grid-template-columns: 1fr var(--right-col-w);
 }
 
-.homepage .right-panel{
-  background: linear-gradient(180deg, var(--rp-grad-start) 0%, var(--rp-grad-end) 100%);
+/* Layer gradient yang mengisi penuh kolom kanan dari TOP–BOTTOM */
+.homepage .layout::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;                          /* tempel ke sisi kanan container */
+  bottom: 0;
+  width: var(--right-col-w);         /* lebar sama dengan kolom kanan */
+  background: linear-gradient(180deg, #49D6B1 0%, #0B5F57 100%);
+  border-radius: 18px;               /* buang jika mau sudut tajam */
+  z-index: 0;                        /* di belakang konten */
 }
 
-/* biar gradient-nya kelihatan, hilangkan bg dalamannya */
+/* Pastikan semua konten ada di atas layer */
+.homepage .layout > *{ position: relative; z-index: 1; }
+
+/* Hilangkan background pada elemen di dalam right panel (biar layer terlihat) */
+.homepage .right-panel,
 .homepage .right-panel .machine-wrapper,
-.homepage .right-panel .status-panel{
+.homepage .right-panel .status-panel,
+.homepage .right-panel .card,
+.homepage .right-panel .panel{
   background: transparent !important;
   box-shadow: none !important;
+  border: 0;
+  margin: 0;
+  padding-inline: 16px;              /* kasih padding internal kalau perlu */
 }
 
+/* Biar kolom kanan tetap ikut tinggi layout */
+.homepage .right-panel{ align-self: stretch; }
+
+/* Responsive: saat stack jadi 1 kolom, matikan overlay kanan */
+@media (max-width: 980px){
+  .homepage .layout{
+    grid-template-columns: 1fr;
+  }
+  .homepage .layout::before{ display: none; }
+}

@@ -1,0 +1,34 @@
+/* Page-specific fine-tuning for Homepage */
+.homepage .card-buckets { background: #E2F6EC; }
+.homepage .card-bucket-single { background: #E2F6EC; }
+
+.homepage .bucket-item .bucket { filter: drop-shadow(0 10px 24px rgba(0,0,0,.08)); }
+.homepage .bucket-item .percent { letter-spacing: .3px; }
+
+.homepage .card-buckets,
+.homepage .card-bucket-single {
+  /* Posisikan konten lebih ke bawah dan ke tengah vertikal */
+  display: grid;
+  align-content: center;
+  padding-top: 40px;
+  padding-bottom: 16px;
+}
+
+.right-panel .status-panel { gap: 14px; }
+
+@media (max-width: 1100px) {
+  .homepage .bucket-svg { max-width: 180px; }
+}
+
+/* bottom-left half-circle glow decoration using SVG */
+.page-left-glow{position:fixed;left:-70px;bottom:-500px;width:800px;height:10000px;background:url('../../assets/icons/glow.svg') no-repeat left bottom/contain;pointer-events:none;z-index:-1}
+
+/* Match action cards typography and icon scale (if used on homepage cards) */
+.card-left .label{display:inline-block;background:rgba(11,174,155,.6);color:#fff;padding:7px 12px;border-radius:24px;font-weight:600;font-size:13.5px}
+.heading{margin:8px 0 0;color:#fff;font-weight:800;font-size:34px;line-height:1.08;text-shadow:0 1px 2px rgba(0,0,0,.15)}
+.card-right .icon-box{width:116px;height:116px;border-radius:18px;background:rgba(255,255,255,.08);display:grid;place-items:center;border:3px solid rgba(255,255,255,.95)}
+.card-right img{max-width:88%;max-height:88%;object-fit:contain}
+.cta{margin-top:28px}
+
+
+
