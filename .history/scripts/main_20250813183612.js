@@ -116,50 +116,34 @@ function setAlertVariant(id, variant) {
   if (rect) rect.setAttribute("fill", variant === "danger" ? "#FF2828" : "#EA800E");
 }
 
-/* === Alert rendering: show 3 danger pills (one per chamber) === */
+/* === Alert rendering per chamber (>=70%) === */
 const ALERT_TEXT = {
   inorganic_recyclable: "Recyclable Chamber Is Full,\nCollect Your Waste, Now!",
   inorganic_non_recyclable: "Non–Recyclable Chamber Is Full,\nCollect Your Waste, Now!",
   organic: "Organic Chamber Is Full,\nCollect Your Waste, Now!"
 };
 
-function renderAlerts(){
-  const wrapInorganic = root.querySelector('.alerts .slot-inorganic');
-  const wrapOrganic = root.querySelector('.alerts .slot-organic');
-  if (!wrapInorganic || !wrapOrganic) return;
-
-  // Clear previous
-  wrapInorganic.innerHTML = '';
-  wrapOrganic.innerHTML = '';
-
-  // Inorganic: two alerts side-by-side
-  ['inorganic_recyclable', 'inorganic_non_recyclable'].forEach((id) => {
-    const pill = root.createElement('div');
-    pill.className = 'alert pill no-nav';
-    pill.setAttribute('data-variant','danger');
-    pill.setAttribute('data-alert-id', 'alert-'+id);
-    pill.innerHTML = `
-      <img class=\"alert-icon\" src=\"../assets/icons/red_alert.svg\" alt=\"alert\" width=\"40\" height=\"40\" />
-      <div class=\"text no-nav\">${(ALERT_TEXT[id]).replace(/\n/g,'<br>')}</div>
-      <button class=\"close no-nav\" data-dismiss><span class=\"no-nav\">&#10005;</span></button>
-    `;
-    wrapInorganic.appendChild(pill);
+function renderAlerts(levelMap){
+  const container = root.querySelector('.alerts');
+  if (!container) return;
+  container.innerHTML = '';
+  Object.entries(levelMap).forEach(([id, level]) => {
+    if ((Number(level) || 0) >= 70) {
+      const wrap = root.createElement('div');
+      wrap.className = 'alert pill no-nav';
+      wrap.setAttribute('data-variant','danger');
+      wrap.setAttribute('data-alert-id', 'alert-'+id);
+      wrap.innerHTML = `
+        <img class="alert-icon" src="../assets/icons/red_alert.svg" alt="alert" width="40" height="40" />
+        <div class="text no-nav">${(ALERT_TEXT[id]||'Chamber Is Full,\nCollect Your Waste, Now!').replace(/\n/g,'<br>')}</div>
+        <button class="close no-nav" data-dismiss><span class="no-nav">&#10005;</span></button>
+      `;
+      container.appendChild(wrap);
+    }
   });
 
-  // Organic: one alert full width of its card
-  const pillOrg = root.createElement('div');
-  pillOrg.className = 'alert pill no-nav';
-  pillOrg.setAttribute('data-variant','danger');
-  pillOrg.setAttribute('data-alert-id', 'alert-organic');
-  pillOrg.innerHTML = `
-    <img class=\"alert-icon\" src=\"../assets/icons/red_alert.svg\" alt=\"alert\" width=\"40\" height=\"40\" />
-    <div class=\"text no-nav\">${(ALERT_TEXT['organic']).replace(/\n/g,'<br>')}</div>
-    <button class=\"close no-nav\" data-dismiss><span class=\"no-nav\">&#10005;</span></button>
-  `;
-  wrapOrganic.appendChild(pillOrg);
-
   // rebind dismiss buttons
-  root.querySelectorAll('.alerts [data-dismiss]').forEach((btn) => {
+  container.querySelectorAll('[data-dismiss]').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const alert = btn.closest('.alert');
@@ -196,12 +180,9 @@ function updateFill(binId, percent, volumeLiters) {
     warn.style.display = p >= 70 ? 'block' : 'none';
   }
 
-  // After first update, ensure alerts are present
+  // After each update, recompute alerts
   levelsState[binId] = p;
-  if (!renderedAlertsOnce) {
-    renderAlerts();
-    renderedAlertsOnce = true;
-  }
+  renderAlerts(levelsState);
 }
 
 /* === Ambil data Firestore (realtime) === */
@@ -235,8 +216,6 @@ const levelsState = {
   inorganic_recyclable: 0,
   organic: 0
 };
-
-let renderedAlertsOnce = false;
 
 
 /* === Idle redirect to lockscreen (3 minutes) === */

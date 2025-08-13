@@ -33,22 +33,18 @@
 }
 
 /* Optional: give a little space under the alert pill */
-.homepage .left-col > .alerts { margin-bottom: 8px; display: grid; gap: 16px; }
-.homepage .left-col > .alerts { grid-template-columns: 1.7fr 1fr; }
-/* slot inorganic = selebar card kiri (1.7fr), organic = selebar card kanan (1fr) */
-.homepage .left-col > .alerts .alert-slot { display: grid; }
-.homepage .left-col > .alerts .slot-inorganic { grid-template-columns: 1fr 1fr; gap: 16px; }
-.homepage .left-col > .alerts .slot-organic { grid-template-columns: 1fr; }
-/* pastikan pill mengikuti lebar kolom slot-nya */
-.homepage .left-col > .alerts .alert-slot .alert { width: 100%; justify-self: stretch; }
-
-@media (max-width: 1100px){
-  .homepage .left-col > .alerts { grid-template-columns: 1fr; }
-  .homepage .left-col > .alerts .slot-inorganic { grid-template-columns: 1fr; }
+.homepage .alerts {
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
-
-/* Pastikan alert di right panel tidak terpengaruh layout grid di kiri */
-.homepage .right-panel .alerts{ display: block; }
+@media (max-width: 1024px){
+  .homepage .alerts{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .homepage .alerts{ grid-template-columns: 1fr; }
+}
 
 /* Right panel small tweaks */
 .right-panel .status-panel { gap: 14px; }

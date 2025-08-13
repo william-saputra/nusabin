@@ -33,18 +33,29 @@
 }
 
 /* Optional: give a little space under the alert pill */
-.homepage .left-col > .alerts { margin-bottom: 8px; display: grid; gap: 16px; }
-.homepage .left-col > .alerts { grid-template-columns: 1.7fr 1fr; }
-/* slot inorganic = selebar card kiri (1.7fr), organic = selebar card kanan (1fr) */
-.homepage .left-col > .alerts .alert-slot { display: grid; }
-.homepage .left-col > .alerts .slot-inorganic { grid-template-columns: 1fr 1fr; gap: 16px; }
-.homepage .left-col > .alerts .slot-organic { grid-template-columns: 1fr; }
-/* pastikan pill mengikuti lebar kolom slot-nya */
-.homepage .left-col > .alerts .alert-slot .alert { width: 100%; justify-self: stretch; }
+.homepage .left-col > .alerts {
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 1024px){
+  .homepage .left-col > .alerts{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .homepage .left-col > .alerts{ grid-template-columns: 1fr; }
+}
 
-@media (max-width: 1100px){
-  .homepage .left-col > .alerts { grid-template-columns: 1fr; }
-  .homepage .left-col > .alerts .slot-inorganic { grid-template-columns: 1fr; }
+/* Batasi lebar pill agar tidak lebih panjang dari kartu */
+.homepage .left-col > .alerts{
+  /* rel yg sama dengan cards: kiri/kanan 20px */
+  width: calc(100% - 40px);
+  margin: 0 20px 8px;
+
+  /* tata 3 pill berjajar, responsif */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
 /* Pastikan alert di right panel tidak terpengaruh layout grid di kiri */
@@ -65,6 +76,8 @@
     padding-top: 12px;
   }
 }
+
+
 
 /* bottom-left half-circle glow decoration using SVG */
 .page-left-glow{
