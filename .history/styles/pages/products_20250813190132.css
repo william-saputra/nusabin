@@ -27,27 +27,23 @@ body{margin:0;font-family:Lexend,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-
 
 /* Waste card */
 .waste-card{
-	background:#fff;                 /* putih */
-	color:var(--text);               /* hitam */
-	border:6px solid var(--teal);    /* teal (#0DC798) */
-	border-radius:26px;
-	padding:28px;
-	box-shadow:none;                 /* hilangin shadow biar clean (opsional) */
-	display:flex;
-	flex-direction:column;
-	min-height:540px;
-	align-items:center;
-  }
-  
-  /* pastikan judul & label ikut hitam */
-  .waste-card .card-title,
-  .waste-card .waste-label{
-	color:var(--text);
-  }
-.card-title{margin:0 0 16px;font-weight:800;font-size:30px;letter-spacing:.2px;font-family:"Plus Jakarta Sans", Lexend, system-ui, sans-serif;text-align:center}
+  background:#fff;               /* white card */
+  color:var(--text);             /* black text */
+  border:6px solid var(--teal);  /* teal border */
+  border-radius:26px;
+  padding:28px;
+  box-shadow:0 10px 24px rgba(16,24,40,0.10);
+  display:flex;flex-direction:column;min-height:540px;align-items:center
+}
+.card-title{
+  margin:0 0 16px;
+  font-weight:800;font-size:30px;letter-spacing:.2px;
+  font-family:"Plus Jakarta Sans", Lexend, system-ui, sans-serif;
+  text-align:center; color:var(--text)
+}
 .waste-visual{flex:1 1 auto;display:grid;place-items:center;width:100%;}
 .waste-image{max-height:88%;max-width:92%;height:auto;width:auto;object-fit:contain;margin:0 auto}
-.waste-label{text-align:center;font-size:20px;font-weight:700;margin-top:auto;padding-top:18px;width:100%}
+.waste-label{text-align:center;font-size:20px;font-weight:700;margin-top:auto;padding-top:18px;width:100%;color:var(--text)}
 
 /* Right column */
 .page-heading{margin:0 0 28px;font-weight:800;font-size:52px;letter-spacing:.2px;text-align:center;font-family:"Plus Jakarta Sans", Lexend, system-ui, sans-serif}
@@ -73,6 +69,3 @@ body{margin:0;font-family:Lexend,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-
 }
 
 
-/* === Waste card: putih + border teal + teks hitam === */
-
-  

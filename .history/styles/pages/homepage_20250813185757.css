@@ -1,0 +1,145 @@
+:root { --topbar-h: 96px; }
+
+/* Page-specific fine-tuning for Homepage */
+.homepage .card-buckets { background: #E2F6EC; }
+.homepage .card-bucket-single { background: #E2F6EC; }
+
+.homepage .bucket-item .bucket { filter: drop-shadow(0 10px 24px rgba(0,0,0,.08)); }
+.homepage .bucket-item .percent { letter-spacing: .3px; }
+
+/* Cards block padding & vertical rhythm */
+.homepage .card-buckets,
+.homepage .card-bucket-single {
+  display: grid;
+  align-content: center;
+  padding-top: 20px;
+  padding-bottom: 16px;
+}
+
+/* Make the whole main area roughly viewport height minus header,
+   and center both columns vertically inside it */
+.homepage .layout{
+  min-height: calc(100vh - var(--topbar-h));
+  align-items: center;            /* center left & right columns vertically */
+}
+
+/* Center the left column contents (alert + cards) vertically */
+.homepage .left-col{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;        /* move alert + cards to vertical center */
+  min-height: calc(100vh - var(--topbar-h));
+}
+
+/* Optional: give a little space under the alert pill */
+.homepage .left-col > .alerts { margin-bottom: 8px; display: grid; gap: 16px; }
+.homepage .left-col > .alerts { grid-template-columns: 1.7fr 1fr; }
+/* slot inorganic = selebar card kiri (1.7fr), organic = selebar card kanan (1fr) */
+.homepage .left-col > .alerts .alert-slot { display: grid; }
+.homepage .left-col > .alerts .slot-inorganic { grid-template-columns: 1fr 1fr; gap: 16px; }
+.homepage .left-col > .alerts .slot-organic { grid-template-columns: 1fr; }
+/* pastikan pill mengikuti lebar kolom slot-nya */
+.homepage .left-col > .alerts .alert-slot .alert { width: 100%; justify-self: stretch; }
+
+@media (max-width: 1100px){
+  .homepage .left-col > .alerts { grid-template-columns: 1fr; }
+  .homepage .left-col > .alerts .slot-inorganic { grid-template-columns: 1fr; }
+}
+
+/* Pastikan alert di right panel tidak terpengaruh layout grid di kiri */
+.homepage .right-panel .alerts{ display: block; }
+
+/* Right panel small tweaks */
+.right-panel .status-panel { gap: 14px; }
+
+/* Responsive scaling */
+@media (max-width: 1100px) {
+  .homepage .bucket-svg { max-width: 180px; }
+}
+
+/* On very short viewports, revert to top so content doesn't get cut off */
+@media (max-height: 720px){
+  .homepage .left-col{
+    justify-content: flex-start;
+    padding-top: 12px;
+  }
+}
+
+/* bottom-left half-circle glow decoration using SVG */
+.page-left-glow{
+  position:fixed;
+  left:-70px;
+  bottom:-500px;
+  width:800px;
+  height:10000px;
+  background:url('../../assets/icons/glow.svg') no-repeat left bottom/contain;
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* Match action cards typography and icon scale (if used on homepage cards) */
+.card-left .label{
+  display:inline-block;
+  background:rgba(11,174,155,.6);
+  color:#fff;
+  padding:7px 12px;
+  border-radius:24px;
+  font-weight:600;
+  font-size:13.5px;
+}
+
+.heading{
+  margin:8px 0 0;
+  color:#fff;
+  font-weight:800;
+  font-size:34px;
+  line-height:1.08;
+  text-shadow:0 1px 2px rgba(0,0,0,.15);
+}
+
+.card-right .icon-box{
+  width:116px;
+  height:116px;
+  border-radius:18px;
+  background:rgba(255,255,255,.08);
+  display:grid;
+  place-items:center;
+  border:3px solid rgba(255,255,255,.95);
+}
+
+.card-right img{ max-width:88%; max-height:88%; object-fit:contain; }
+
+.cta{ margin-top:28px; }
+ 
+ /* Warning icon overlay when bucket >= 70% */
+ .homepage .bucket-item{ position: relative; }
+ .homepage .bucket-warning{
+   position: absolute;
+   left: 50%;
+   top: 35%;
+   transform: translate(-50%, -50%);
+   width: 68px;
+   height: 68px;
+   pointer-events: none;
+   user-select: none;
+   filter: drop-shadow(0 2px 6px rgba(0,0,0,.15));
+   display: none; /* shown via JS when danger */
+ }
+
+:root{
+  --rp-grad-start: #E2F6EC; /* atas */
+  --rp-grad-end:   #0C7B83; /* bawah */
+}
+
+.homepage .right-panel{
+  background: linear-gradient(180deg, var(--rp-grad-start) 0%, var(--rp-grad-end) 100%);
+}
+
+/* biar gradient-nya kelihatan, hilangkan bg dalamannya */
+.homepage .right-panel .machine-wrapper,
+.homepage .right-panel .status-panel{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+

@@ -38,13 +38,7 @@ body{margin:0;font-family:Lexend,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-
 	min-height:540px;
 	align-items:center;
   }
-  
-  /* pastikan judul & label ikut hitam */
-  .waste-card .card-title,
-  .waste-card .waste-label{
-	color:var(--text);
-  }
-.card-title{margin:0 0 16px;font-weight:800;font-size:30px;letter-spacing:.2px;font-family:"Plus Jakarta Sans", Lexend, system-ui, sans-serif;text-align:center}
+  .card-title{margin:0 0 16px;font-weight:800;font-size:30px;letter-spacing:.2px;font-family:"Plus Jakarta Sans", Lexend, system-ui, sans-serif;text-align:center}
 .waste-visual{flex:1 1 auto;display:grid;place-items:center;width:100%;}
 .waste-image{max-height:88%;max-width:92%;height:auto;width:auto;object-fit:contain;margin:0 auto}
 .waste-label{text-align:center;font-size:20px;font-weight:700;margin-top:auto;padding-top:18px;width:100%}
@@ -73,6 +67,3 @@ body{margin:0;font-family:Lexend,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-
 }
 
 
-/* === Waste card: putih + border teal + teks hitam === */
-
-  
