@@ -153,30 +153,26 @@ input:checked + .slider:before{transform:translateX(22px)}
   color:#fff
 }
 
-/* === Center content (kiri+kanan) & jaga ukuran mesin === */
-:root { --topbar-h: 96px; }
+/* ===== Center all content vertically on Detail page ===== */
+:root { --topbar-h: 96px; } /* samakan dengan tinggi header kamu */
 
 .layout.container{
+  /* bikin tinggi main ≈ tinggi layar supaya align-items:center bekerja */
   min-height: calc(100vh - var(--topbar-h));
-  align-items: center;                 /* pusat vertikal */
+  align-items: center;                 /* sudah ada, tapi biar pasti */
 }
 
-/* kolom ikut center */
+/* pastikan kolom kiri/kanan ikut center */
 .left, .right{ align-self: center; }
 
-/* kembalikan ukuran mesin seperti semula */
-.machine{
-  height: 900px;       /* ukuran asli */
-  margin-top: 0;       /* hilangkan offset lama */
-  transform: none;     /* pastikan tidak terscale */
+/* mesin: hapus offset atas yang bikin posisinya ke atas,
+   lalu sedikit turunin agar pas di tengah */
+.machine{ 
+  margin-top: 0;            /* override dari 48px kalau ada */
+  transform: translateY(20px);
 }
 
-/* naikin sedikit biar tidak terlalu bawah (tweak angkanya jika perlu) */
-.machine-stage{
-  transform: translateY(-12px);  /* -12px = naik sedikit */
-}
-
-/* kalau ingin dua kartu di kanan ikut naik sedikit juga, aktifkan ini:
-.right{ transform: translateY(-12px); }
+/* kalau mau tanpa nudge manual, boleh pakai ini saja:
+.machine{ margin-top:0; transform:none; }
 */
 

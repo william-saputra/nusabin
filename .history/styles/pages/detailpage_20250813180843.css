@@ -166,7 +166,7 @@ input:checked + .slider:before{transform:translateX(22px)}
 
 /* kembalikan ukuran mesin seperti semula */
 .machine{
-  height: 900px;       /* ukuran asli */
+  height: 540px;       /* ukuran asli */
   margin-top: 0;       /* hilangkan offset lama */
   transform: none;     /* pastikan tidak terscale */
 }
