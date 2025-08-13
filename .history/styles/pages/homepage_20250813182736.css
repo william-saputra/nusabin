@@ -33,8 +33,13 @@
 }
 
 /* Optional: give a little space under the alert pill */
-.homepage .alerts { margin-bottom: 8px; }
-
+.homepage .alerts{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 8px;
+}
 /* Right panel small tweaks */
 .right-panel .status-panel { gap: 14px; }
 
