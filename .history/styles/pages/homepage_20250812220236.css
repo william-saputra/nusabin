@@ -1,0 +1,10 @@
+/* Page-specific fine-tuning for Homepage */
+.homepage .card-buckets { background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(252,253,255,0.9)); }
+.homepage .card-bucket-single { background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(252,253,255,0.9)); }
+
+.homepage .bucket-item .bucket { filter: drop-shadow(0 10px 24px rgba(0,0,0,.08)); }
+.homepage .bucket-item .percent { letter-spacing: .3px; }
+
+.right-panel .status-panel { gap: 14px; }
+
+

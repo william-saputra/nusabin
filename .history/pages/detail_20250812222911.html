@@ -1,0 +1,56 @@
+<section class="page-content">
+    <div class="container">
+        <div class="detail-header">
+            <button class="back-button" onclick="window.router.loadPage('home')">
+                ← Back to Dashboard
+            </button>
+            <h1>Waste Management Detail</h1>
+        </div>
+        
+        <div class="detail-content">
+            <div class="machine-status">
+                <div class="machine-image">
+                    <img src="assets/images/machine.png" alt="Waste Management Machine" onerror="this.style.display='none'">
+                    <div class="machine-placeholder" style="display: none;">
+                        <div class="machine-icon">🏭</div>
+                        <p>Waste Management Machine</p>
+                    </div>
+                </div>
+                
+                <div class="machine-info">
+                    <h2>Machine Status</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <div class="status-indicator chute"></div>
+                            <div class="status-text">
+                                <span class="status-label">Chute</span>
+                                <span class="status-value" id="chute-status">Open</span>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-indicator compost"></div>
+                            <div class="status-text">
+                                <span class="status-label">Compost</span>
+                                <span class="status-value" id="compost-status">On - Drying</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chambers-detail">
+                <h2>Chamber Details</h2>
+                <div class="chambers-grid" id="detail-chambers">
+                    <!-- Chambers akan dimuat dari Firebase -->
+                </div>
+            </div>
+            
+            <div class="activity-log">
+                <h2>Recent Activity</h2>
+                <div class="log-container" id="activity-log">
+                    <!-- Activity log akan dimuat dari Firebase -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

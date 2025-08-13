@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusabin – Detail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/base.css" />
+    <link rel="stylesheet" href="../styles/pages/detailpage.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <img src="../assets/images/green_logo.png" alt="Nusabin" class="logo" />
+        <div class="spacer"></div>
+        <div></div>
+      </header>
+
+      <main class="layout container">
+        <section class="left">
+          <div class="machine-stage">
+            <img class="machine" src="../assets/images/machine_arrow.png" alt="Machine" />
+            <div class="glow" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <section class="right">
+          <article class="action-card">
+            <div class="card-body">
+              <div class="card-left">
+                <div class="label">Chute</div>
+                <h2 class="heading">Open<br />Chute</h2>
+              </div>
+              <div class="card-right">
+                <div class="icon-box">
+                  <img src="../assets/icons/chute.svg" alt="Chute" />
+                </div>
+              </div>
+            </div>
+            <button class="cta" type="button">Open Chute</button>
+          </article>
+
+          <article class="action-card">
+            <div class="card-body">
+              <div class="card-left">
+                <div class="label">Compost</div>
+                <h2 class="heading">Start<br />Compost</h2>
+              </div>
+              <div class="card-right">
+                <div class="icon-box">
+                  <img src="../assets/icons/compost.svg" alt="Compost" />
+                </div>
+              </div>
+            </div>
+            <button class="cta" type="button">Start Compost</button>
+          </article>
+        </section>
+      </main>
+      <div class="page-left-glow" aria-hidden="true"></div>
+    </div>
+
+    <script>
+      // Redirect anywhere except the two CTA buttons
+      document.addEventListener('click', function (e) {
+        const isCta = e.target.closest && e.target.closest('.cta');
+        if (!isCta) {
+          window.location.href = '../pages/homepage.html';
+        }
+      }, { capture: true });
+    </script>
+  </body>
+  </html>
+
+

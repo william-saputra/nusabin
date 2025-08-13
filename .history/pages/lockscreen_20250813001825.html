@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusabin – Lockscreen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --fg: #ffffff; --muted: #d1d5db; }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        color: var(--fg);
+        background: #000;
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      header { display: grid; place-items: center; padding-top: 6vh; }
+      .logo { width: 180px; height: auto; }
+      footer { display: grid; place-items: center; padding-bottom: 10vh; }
+      .title { font-size: 36px; font-weight: 800; letter-spacing: .3px; margin: 0 0 8px; }
+      .subtitle { font-size: 20px; color: var(--muted); margin: 0; }
+      .glow { position: absolute; left: 50%; bottom: -200px; transform: translateX(-50%); width: 1200px; height: 600px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,0.55), rgba(255,255,255,0) 70%); filter: blur(40px); pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="../assets/images/white_logo.png" alt="Nusabin" />
+    </header>
+    <div></div>
+    <footer>
+      <h1 class="title">Nusabin Srikandi</h1>
+      <p class="subtitle">Standing By..</p>
+    </footer>
+    <div class="glow" aria-hidden="true"></div>
+  </body>
+  </html>
+
+

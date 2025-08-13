@@ -1,0 +1,39 @@
+/* Hapus efek card lama di right-panel */
+.right-panel {
+  background:
+    radial-gradient(120% 80% at 80% 90%, rgba(255,255,255,.25) 0%, transparent 60%),
+    linear-gradient(180deg, #C6FFE2 0%, #00C28C 100%) !important; /* gradient hijau penuh */
+  border-radius: 22px 0 0 22px !important; /* rounded kiri saja */
+  box-shadow: none !important;
+  min-height: calc(100vh - 72px) !important; /* isi tinggi viewport */
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+/* pastikan alert, mesin, dan status panel di dalamnya diatur ulang */
+.right-panel .alerts { margin: 0; }
+
+.right-panel .machine-wrapper {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 8px 0;
+}
+
+.right-panel .machine {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 32px rgba(0,0,0,.25));
+}
+
+.right-panel .status-panel {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}

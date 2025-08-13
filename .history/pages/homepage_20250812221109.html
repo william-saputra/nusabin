@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusabin – Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/base.css" />
+    <link rel="stylesheet" href="../styles/pages/homepage.css" />
+  </head>
+  <body>
+    <div class="homepage no-nav">
+      <header class="topbar no-nav">
+        <img src="../assets/images/green_logo.png" alt="Nusabin" class="logo no-nav" />
+        <div class="spacer no-nav"></div>
+        <div class="theme-toggle no-nav">
+          <span class="label no-nav">Dark Mode</span>
+          <label class="switch no-nav">
+            <input id="dark-toggle" class="no-nav" type="checkbox" />
+            <span class="slider round no-nav"></span>
+          </label>
+        </div>
+      </header>
+
+      <main class="layout">
+        <div class="left-col">
+          <section class="alerts no-nav">
+            <div class="alert alert-danger no-nav">
+              <span class="icon no-nav">&#9888;&#65039;</span>
+              <div class="text no-nav">Your Inorganic Chamber Are Full, Collect Your Waste, Now!</div>
+              <button class="close no-nav" data-dismiss>
+                <span class="no-nav">&#10005;</span>
+              </button>
+            </div>
+          </section>
+          <div class="left-grid clickable-area" data-navigate>
+          <div class="card card-buckets">
+            <div class="bucket-group">
+              <div class="bucket-item" data-id="inorganic-recyclable" data-percent="20" data-volume="45" data-title="Inorganic" data-subtitle="Recyclable">
+                <div class="bucket">
+                  <div class="bucket-water"></div>
+                </div>
+                <div class="bucket-metrics">
+                  <div class="percent">20%</div>
+                  <div class="liter">45 Liter</div>
+                </div>
+                <div class="chip">
+                  <span>Inorganic</span>
+                  <strong>Recyclable</strong>
+                </div>
+              </div>
+              <div class="bucket-item" data-id="inorganic-nonrecyclable" data-percent="70" data-volume="134" data-title="Inorganic" data-subtitle="Non-Recyclable">
+                <div class="bucket">
+                  <div class="bucket-water"></div>
+                </div>
+                <div class="bucket-metrics">
+                  <div class="percent">70%</div>
+                  <div class="liter">134 Liter</div>
+                </div>
+                <div class="chip">
+                  <span>Inorganic</span>
+                  <strong>Non-Recyclable</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-bucket-single">
+            <div class="bucket-item" data-id="organic" data-percent="20" data-volume="45" data-title="Organic" data-subtitle="">
+              <div class="bucket">
+                <div class="bucket-water"></div>
+              </div>
+              <div class="bucket-metrics">
+                <div class="percent">20%</div>
+                <div class="liter">45 Liter</div>
+              </div>
+              <div class="chip">
+                <strong>Organic</strong>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <aside class="right-panel">
+          <section class="alerts no-nav">
+            <div class="alert alert-warning no-nav">
+              <span class="icon no-nav">&#128276;</span>
+              <div class="text no-nav">Make Sure Organic Chamber Is Empty And Close The Cute</div>
+              <button class="close no-nav" data-dismiss>
+                <span class="no-nav">&#10005;</span>
+              </button>
+            </div>
+          </section>
+          <div class="machine-wrapper">
+            <img src="../assets/images/machine.png" alt="Machine" class="machine" />
+          </div>
+          <div class="status-panel no-nav">
+            <div class="status-row no-nav">
+              <div class="label no-nav">Chute</div>
+              <div class="status-pill status-open no-nav">Open</div>
+            </div>
+            <div class="status-row no-nav">
+              <div class="label no-nav">Compost</div>
+              <div class="status-pill status-on no-nav">On - Drying</div>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="../scripts/theme.js"></script>
+    <script src="../scripts/main.js"></script>
+  </body>
+  </html>
+
+

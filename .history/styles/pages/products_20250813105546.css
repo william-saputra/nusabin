@@ -1,0 +1,56 @@
+:root{
+	--bg:#ffffff;
+	--teal:#1CC8A0;
+	--teal-deep:#13a887;
+	--teal-ring:#0f8e72;
+	--red:#e4473a;
+	--red-ring:#ff7a70;
+	--text:#000000;
+	--muted:#666666;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Lexend,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:#fff}
+
+/* subtle bottom-right green gradient (very soft) */
+.products-page{min-height:100vh;position:relative}
+.products-page::after{content:"";position:fixed;right:-200px;bottom:-200px;width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side, rgba(28,200,160,0.12), rgba(28,200,160,0) 70%);filter:blur(12px);pointer-events:none;z-index:-1}
+
+.container{max-width:1240px;margin:0 auto;padding:0 32px}
+
+/* Layout */
+.products-layout{display:grid;grid-template-columns:360px 1fr;gap:64px;align-items:center}
+.left-col,.right-col{display:block}
+
+/* Waste card */
+.waste-card{background:var(--teal);color:#fff;border-radius:26px;padding:28px;box-shadow:0 16px 40px rgba(16,24,40,0.12);display:flex;flex-direction:column;min-height:540px;align-items:center}
+.card-title{margin:0 0 16px;font-weight:800;font-size:30px;letter-spacing:.2px;font-family:"Plus Jakarta Sans", Lexend, system-ui, sans-serif;text-align:center}
+.waste-visual{flex:1 1 auto;display:grid;place-items:center;width:100%}
+.waste-image{max-height:70%;max-width:80%;height:00px;width:auto;object-fit:contain;margin:0 auto}
+.waste-label{text-align:center;font-size:17px;font-weight:600;margin-top:auto;padding-top:18px;width:100%}
+
+/* Right column */
+.page-heading{margin:0 0 28px;font-weight:800;font-size:52px;letter-spacing:.2px;text-align:center;font-family:"Plus Jakarta Sans", Lexend, system-ui, sans-serif}
+.actions{display:flex;align-items:center;justify-content:center;gap:28px}
+.action{display:grid;justify-items:center;gap:12px}
+
+.round-btn{appearance:none;border:0;cursor:pointer;border-radius:999px;width:180px;height:180px;display:grid;place-items:center;box-shadow:0 12px 28px rgba(16,24,40,0.18);transition:transform .15s ease, box-shadow .15s ease}
+.round-btn img{width:64px;height:64px}
+.round-btn:focus{outline:3px solid rgba(0,0,0,.15);outline-offset:3px}
+.round-btn:hover{transform:scale(1.03);box-shadow:0 16px 36px rgba(16,24,40,0.22)}
+.round-btn:active{transform:scale(.98)}
+
+.round-btn.yes{background:radial-gradient(circle at 30% 30%, #1fd1aa, #18b495 70%);border:3px solid var(--teal-ring)}
+.round-btn.no{background:radial-gradient(circle at 30% 30%, #ff6a5d, #e4473a 70%);border:3px solid var(--red-ring)}
+
+.btn-caption{font-size:20px;font-weight:700;color:#222;font-family:"Plus Jakarta Sans", Lexend, system-ui, sans-serif}
+
+@media (max-width:1100px){
+	.products-layout{grid-template-columns:1fr;gap:32px}
+	.page-heading{font-size:44px}
+	.actions{gap:22px}
+	.round-btn{width:156px;height:156px}
+}
+
+

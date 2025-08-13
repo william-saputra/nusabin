@@ -1,0 +1,84 @@
+/* ========== OVERRIDES: make right-panel full-bleed, not a card ========== */
+
+/* 1) Grid utama: hapus padding top/right/bottom supaya panel kanan bisa nempel */
+.homepage .layout{
+  /* semula padding: 24px; */
+  padding: 0 0 0 24px !important;   /* kiri tetap ada gutter 24px, sisi lain 0 */
+  gap: 24px !important;
+  min-height: auto;                 /* kita atur tinggi di panel kanan */
+}
+
+/* 2) Panel kanan: full tinggi viewport, nempel kanan, tanpa efek card */
+.homepage .right-panel{
+  /* hilangkan semua gaya "card" yang mungkin diwarisi */
+  background:
+    radial-gradient(120% 80% at 80% 90%, rgba(255,255,255,.25) 0%, transparent 60%),
+    linear-gradient(180deg, #C6FFE2 0%, #00C28C 100%) !important;
+  box-shadow: none !important;
+  border: none !important;
+
+  /* radius 0 agar sisi kiri tidak terlihat melengkung (bukan card) */
+  border-radius: 0 !important;
+
+  /* tempel ke tepi container kanan & penuh tinggi viewport (dikurangi header) */
+  height: calc(100vh - 72px) !important;   /* ganti 72px jika tinggi header beda */
+  margin: 0 !important;
+
+  /* tata letak konten */
+  display: flex !important;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+  overflow: hidden;
+  align-self: stretch;    /* pastikan mengisi track grid secara penuh */
+}
+
+/* 3) Hilangkan jarak atas/bawah internal yang bikin “mengapung” */
+.homepage .right-panel .alerts{ margin: 0 !important; }
+.homepage .right-panel .status-panel{
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+/* 4) Area mesin mengisi ruang tengah */
+.homepage .right-panel .machine-wrapper{
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 8px 0;
+}
+.homepage .right-panel .machine{
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 32px rgba(0,0,0,.25));
+}
+
+/* 5) Opsional: kalau masih terlihat ada garis/border rounded di area gambar,
+      kemungkinan berasal dari style global di .machine-wrapper/.card.
+      Paksa bersih di sini. */
+.homepage .right-panel .machine-wrapper{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* 6) Responsif: ketika stack jadi 1 kolom, biar tetap full-bleed */
+@media (max-width: 860px){
+  .homepage .layout{ padding: 0 !important; }
+  .homepage .right-panel{
+    height: auto !important;
+    min-height: 420px;
+  }
+}
+.homepage aside.right-panel.card,
+.homepage .right-panel.card {
+  border-radius: 0 !important;
+  background: inherit !important;
+  box-shadow: none !important;
+  border: none !important;
+}

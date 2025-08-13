@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusabin – Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/base.css" />
+    <link rel="stylesheet" href="../styles/pages/homepage.css" />
+  </head>
+  <body>
+    <div class="homepage no-nav">
+      <header class="topbar no-nav">
+        <img src="../assets/images/green_logo.png" alt="Nusabin" class="logo no-nav" />
+        <div class="spacer no-nav"></div>
+        <div class="theme-toggle no-nav">
+          <span class="label no-nav">Dark Mode</span>
+          <label class="switch no-nav">
+            <input id="dark-toggle" class="no-nav" type="checkbox" />
+            <span class="slider round no-nav"></span>
+          </label>
+        </div>
+      </header>
+
+      <main class="layout">
+        <div class="left-col">
+          <section class="alerts no-nav">
+            <div class="alert alert-danger no-nav">
+              <span class="icon-svg no-nav" aria-hidden="true"></span>
+              <div class="text no-nav">Your Inorganic Chamber Are Full, Collect Your Waste, Now!</div>
+              <button class="close no-nav" data-dismiss>
+                <span class="no-nav">&#10005;</span>
+              </button>
+            </div>
+          </section>
+          <div class="left-grid clickable-area" data-navigate>
+          <div class="card card-buckets">
+            <div class="bucket-group">
+              <div class="bucket-item" data-id="inorganic_recyclable">
+                <svg class="bucket-svg" viewBox="0 0 240 220" aria-labelledby="title-ir" role="img">
+                  <title id="title-ir">Inorganic Recyclable</title>
+                  <defs>
+                    <clipPath id="cupShape-inorganic_recyclable">
+                      <path d="M52 66 C50 90 60 150 70 180 L170 180 C184 150 190 90 188 66 C160 62 120 58 52 66 Z" />
+                    </clipPath>
+                  </defs>
+                  <rect id="cupFill-inorganic_recyclable" x="60" y="180" width="120" height="0" clip-path="url(#cupShape-inorganic_recyclable)" rx="6" ry="6" />
+                  <g class="bucket-static" fill="none" stroke="#0b5f57" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M52 66 C50 90 60 150 70 180 L170 180 C184 150 190 90 188 66" />
+                    <path d="M48 64 C82 58 160 58 192 64" />
+                  </g>
+                </svg>
+                <div class="bucket-metrics">
+                  <div class="percent" data-percent>0%</div>
+                  <div class="liter" data-liter>0 Liter</div>
+                </div>
+                <div class="chip"><span>Inorganic</span><strong>Recyclable</strong></div>
+              </div>
+
+              <div class="bucket-item" data-id="inorganic_non_recyclable">
+                <svg class="bucket-svg" viewBox="0 0 240 220" aria-labelledby="title-inr" role="img">
+                  <title id="title-inr">Inorganic Non-Recyclable</title>
+                  <defs>
+                    <clipPath id="cupShape-inorganic_non_recyclable">
+                      <path d="M52 66 C50 90 60 150 70 180 L170 180 C184 150 190 90 188 66 C160 62 120 58 52 66 Z" />
+                    </clipPath>
+                  </defs>
+                  <rect id="cupFill-inorganic_non_recyclable" x="60" y="180" width="120" height="0" clip-path="url(#cupShape-inorganic_non_recyclable)" rx="6" ry="6" />
+                  <g class="bucket-static" fill="none" stroke="#0b5f57" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M52 66 C50 90 60 150 70 180 L170 180 C184 150 190 90 188 66" />
+                    <path d="M48 64 C82 58 160 58 192 64" />
+                  </g>
+                </svg>
+                <div class="bucket-metrics">
+                  <div class="percent" data-percent>0%</div>
+                  <div class="liter" data-liter>0 Liter</div>
+                </div>
+                <div class="chip"><span>Inorganic</span><strong>Non-Recyclable</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-bucket-single">
+            <div class="bucket-item" data-id="organic">
+              <svg class="bucket-svg" viewBox="0 0 240 220" aria-labelledby="title-org" role="img">
+                <title id="title-org">Organic</title>
+                <defs>
+                  <clipPath id="cupShape-organic">
+                    <path d="M52 66 C50 90 60 150 70 180 L170 180 C184 150 190 90 188 66 C160 62 120 58 52 66 Z" />
+                  </clipPath>
+                </defs>
+                <rect id="cupFill-organic" x="60" y="180" width="120" height="0" clip-path="url(#cupShape-organic)" rx="6" ry="6" />
+                <g class="bucket-static" fill="none" stroke="#0b5f57" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M52 66 C50 90 60 150 70 180 L170 180 C184 150 190 90 188 66" />
+                  <path d="M48 64 C82 58 160 58 192 64" />
+                </g>
+              </svg>
+              <div class="bucket-metrics">
+                <div class="percent" data-percent>0%</div>
+                <div class="liter" data-liter>0 Liter</div>
+              </div>
+              <div class="chip"><strong>Organic</strong></div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <aside class="right-panel">
+          <section class="alerts no-nav">
+            <div class="alert alert-warning no-nav">
+              <span class="icon-svg no-nav" aria-hidden="true"></span>
+              <div class="text no-nav">Make Sure Organic Chamber Is Empty And Close The Cute</div>
+              <button class="close no-nav" data-dismiss>
+                <span class="no-nav">&#10005;</span>
+              </button>
+            </div>
+          </section>
+          <div class="machine-wrapper">
+            <img src="../assets/images/machine.png" alt="Machine" class="machine" />
+          </div>
+          <div class="status-panel no-nav">
+            <div class="status-row no-nav">
+              <div class="label no-nav">Chute</div>
+              <div class="status-pill status-open no-nav">Open</div>
+            </div>
+            <div class="status-row no-nav">
+              <div class="label no-nav">Compost</div>
+              <div class="status-pill status-on no-nav">On - Drying</div>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="../scripts/theme.js"></script>
+    <script src="../scripts/main.js"></script>
+  </body>
+  </html>
+
+

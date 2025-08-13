@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusabin – Detail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/base.css" />
+    <link rel="stylesheet" href="../styles/pages/detailpage.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <img src="../assets/images/green_logo.png" alt="Nusabin" class="logo" />
+        <div class="spacer"></div>
+      </header>
+
+      <main class="layout container">
+        <section class="left">
+          <div class="machine-stage">
+            <img class="machine" src="../assets/images/machine_arrow.png" alt="Machine" />
+            <div class="glow" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <section class="right">
+          <article class="action-card">
+            <div class="card-body">
+              <div class="card-left">
+                <div class="label">Chute</div>
+                <h2 class="heading">Open<br />Chute</h2>
+              </div>
+              <div class="card-right">
+                <div class="icon-box">
+                  <img src="../assets/icons/chute.svg" alt="Chute" />
+                </div>
+              </div>
+            </div>
+            <button class="cta" id="open-chute-btn" type="button">Open Chute</button>
+          </article>
+
+          <article class="action-card">
+            <div class="card-body">
+              <div class="card-left">
+                <div class="label">Compost</div>
+                <h2 class="heading">Start<br />Compost</h2>
+              </div>
+              <div class="card-right">
+                <div class="icon-box">
+                  <img src="../assets/icons/compost.svg" alt="Compost" />
+                </div>
+              </div>
+            </div>
+            <button class="cta" type="button">Start Compost</button>
+          </article>
+        </section>
+      </main>
+      <div class="page-left-glow" aria-hidden="true"></div>
+      <div class="modal-overlay" id="confirm-modal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+          <div class="modal-gallery">
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+          </div>
+          <h2 id="modal-title" class="modal-title">Are You Sure?</h2>
+          <p id="modal-desc" class="modal-desc">Composting Process Still Running, Are You Sure?</p>
+          <div class="modal-actions">
+            <button type="button" class="modal-btn btn-no cta" data-action="no">No</button>
+            <button type="button" class="modal-btn btn-yes cta" data-action="yes">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Redirect anywhere except the CTA buttons OR when modal is open
+      document.addEventListener('click', function (e) {
+        const modalOpen = document.getElementById('confirm-modal')?.classList.contains('open');
+        const isCta = e.target.closest && e.target.closest('.cta');
+        if (!isCta && !modalOpen) {
+          window.location.href = '../pages/homepage.html';
+        }
+      }, { capture: true });
+
+      // Modal behavior
+      (function(){
+        const modal = document.getElementById('confirm-modal');
+        const openBtn = document.getElementById('open-chute-btn');
+        if (openBtn && modal) {
+          openBtn.addEventListener('click', function(ev){
+            ev.stopPropagation();
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden','false');
+          });
+        }
+        modal?.addEventListener('click', function(ev){
+          const isYes = ev.target.closest('[data-action="yes"]');
+          const isNo = ev.target.closest('[data-action="no"]');
+          if (isYes || isNo || ev.target === modal) {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden','true');
+          }
+        });
+      })();
+    </script>
+  </body>
+  </html>
+
+
